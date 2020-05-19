@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: |
+          git checkout -b pr
+          git fetch --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
+          git checkout master
+          git checkuout pr
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
